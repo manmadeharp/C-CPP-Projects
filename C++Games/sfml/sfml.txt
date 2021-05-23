@@ -1,0 +1,4 @@
+to compile sfml programs: 
+g++ -c main.cpp
+g++ main.o -o (program_name) -lsfml-graphics -lsfml-window -lsfml-system
+

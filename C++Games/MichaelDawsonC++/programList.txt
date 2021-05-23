@@ -1,0 +1,5 @@
+Programs to make:
+Date calculator - allow storage of date calculations and label for it to replace the chrome I use
+SFML particles
+TicTacToe Game
+

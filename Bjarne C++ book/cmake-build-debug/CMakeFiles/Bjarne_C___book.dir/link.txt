@@ -1,0 +1,1 @@
+/usr/bin/g++-8  -g   CMakeFiles/Bjarne_C___book.dir/main.cpp.o CMakeFiles/Bjarne_C___book.dir/test.cpp.o  -o Bjarne_C___book 

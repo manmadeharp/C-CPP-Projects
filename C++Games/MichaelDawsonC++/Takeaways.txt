@@ -1,0 +1,5 @@
+Planning.
+- It's easier to scrap a blueprint than a 50-story building.
+- use pseudocode or diagrams or anything that allows a understandable level of precise abstraction.
+- concept papers, design documents, asset list, function/class list, documentation, conceptualization.
+

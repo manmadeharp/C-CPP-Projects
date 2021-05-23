@@ -1,0 +1,4 @@
+"/home/Finbar/Desktop/ubuntu save/JetBrains CLion 2020.1 Build 201.6668.126 for Linux/clion-2020.1/bin/cmake/linux/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/bin/g++-8 -G "CodeBlocks - Unix Makefiles" "/home/Finbar/CLionProjects/Bjarne C++ book"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/Finbar/CLionProjects/Bjarne C++ book/cmake-build-debug

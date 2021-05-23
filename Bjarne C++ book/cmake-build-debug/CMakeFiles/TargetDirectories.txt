@@ -1,0 +1,3 @@
+/home/Finbar/CLionProjects/Bjarne C++ book/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/Finbar/CLionProjects/Bjarne C++ book/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/Finbar/CLionProjects/Bjarne C++ book/cmake-build-debug/CMakeFiles/Bjarne_C___book.dir
