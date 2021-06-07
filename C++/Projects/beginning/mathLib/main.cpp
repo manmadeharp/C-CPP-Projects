@@ -1,10 +1,13 @@
 // Main entry point to Math Library
 
-#include<iostream>
-
-
+#include <cmath>
+#include <iostream>
+#include "./ALvlMath/SurdsIndices.h"
 
 int main()
 {
-	std::cout << "test";
+	float i = 8340;
+	std::cout << "test" << '\n';
+	std::cout << mtLib::root(i) << '\n';
+	std::cout << sqrt(i) << '\n';
 }
