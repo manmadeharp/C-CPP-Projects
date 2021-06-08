@@ -16,7 +16,10 @@
 
 
 ##### To Do
-- Add new functions to mathlibrary and calculator
+- Add new functions to mathlibrary and calculator.
+###### Passing Variables as Functions
+- determine if a letter passed as an argument, is a definede varible through a class function return boolean, checkToken.
+- store a function containing a unknown varible as an argument until the variable is defined, then once the variable is defined print the functions output.
 
 ##### Done
 - added function calling to calculator

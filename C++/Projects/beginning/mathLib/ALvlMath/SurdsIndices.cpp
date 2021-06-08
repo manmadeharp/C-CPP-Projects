@@ -1,9 +1,12 @@
 #include<iostream>
 #include<cmath>
 #include<map>
-//namespace mtLib	{
-	float root(std::map<int, float> arg)
-	{
-		return std::sqrt(arg[0]);
-	}
-//}
+
+float root(std::map<int, float> arg)
+{
+	if(arg.size() > 1)
+		return 0;
+	return std::sqrt(arg[0]);
+}
+
+
