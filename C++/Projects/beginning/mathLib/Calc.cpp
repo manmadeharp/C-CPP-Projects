@@ -1,6 +1,10 @@
 // Calculator that uses the Math Lib
 // Recursive Descent
 
+// Compile Commands - g++  Calc.cpp  ./ALvlMath/SurdsIndices.cpp ./GUI/Interface.cpp -o Calculator -lsfml-graphics -lsfml-window -lsfml-system
+
+// - g++  Calc.cpp  ./ALvlMath/SurdsIndices.cpp -o Calculator
+
 #include<iostream>
 #include<string>
 #include<cctype>
@@ -8,13 +12,14 @@
 #include<map>
 #include<sstream>
 #include "./ALvlMath/SurdsIndices.h"
+#include "./GUI/Interface.h"
 
 // Functions
 double term(bool get);
 double expr(bool);
 
 // Function Pointer
-typedef float(*FnPtr)(std::map<int, float>);
+typedef float(*FnPtr)(std::map<int, float> arg);
 
 // Maps
 std::map<std::string, double> table;
@@ -98,7 +103,11 @@ Token Token_stream::get()
 				while (ip->get(ch)) // same as *ip.get gets the next character
 					if (isalnum(ch))
 						ct.string_value += ch; // appends the letters to the current string value
-
+					else if(ct.string_value == "GUI"){
+						GUI UI; 
+						UI.Session(ct.string_value);
+						return ct;
+					}
 					else if (ch == '(') {
 						ct.kind = Kind::funct;
 						int c = 0;
@@ -116,7 +125,7 @@ Token Token_stream::get()
 							error("No ) detected");
 						break;
 					}
-
+					
 					else	{
 						ip->putback(ch);
 						break;
@@ -146,7 +155,6 @@ double functGenerator(std::map<int, float> arg, Token tok)
 	
 	float v = functs[tok.string_value](arg);
 	//std::cout << '\n' << v << '\n';
-
 	return v;
 }
 
@@ -205,6 +213,7 @@ double prim(bool get)
 		{
 			if(ts.current().number_value == 5)
 				error("error with function calling");
+			
 			//std::cout << '\n' << "Function Value: " << ts.current().number_value << '\n'; 
 			double v = ts.current().number_value;
 			ts.get();
@@ -290,7 +299,6 @@ int main(int argc, char* argv[])
 	constFunctions();
 
 	calculate();
-	
 	return no_of_errors;
 }	
 
