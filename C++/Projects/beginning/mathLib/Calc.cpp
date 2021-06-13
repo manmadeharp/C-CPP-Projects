@@ -1,5 +1,5 @@
 // Calculator that uses the Math Lib
-// Recursive Descent
+// It uses compiler concepts such as: Recursive Descent
 
 // Compile Commands - g++  Calc.cpp  ./ALvlMath/SurdsIndices.cpp
 // ./GUI/Interface.cpp -o Calculator -lsfml-graphics -lsfml-window -lsfml-system
