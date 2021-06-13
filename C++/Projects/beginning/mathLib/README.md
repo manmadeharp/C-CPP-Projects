@@ -3,7 +3,7 @@
 ###### Calc.cpp
 - This is the entry point to the program 
 - It handles the user input and forms tokens from the istream.
-- the tokens are the used to call other functions
+- the tokens are then used to call functions
 ###### ALvlMath Folder
 - This will be where the algorithms I make for my A Level maths course will be placed
 ###### GUI Folder
