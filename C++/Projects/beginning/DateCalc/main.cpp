@@ -1,3 +1,5 @@
+// TO BUG TEST
+// MANY BUGS...
 #include<mutex>
 #include <fstream>
 #include <iostream>
@@ -10,15 +12,83 @@ std::vector<int> Days{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 std::mutex mtx;
 
+using namespace std;
+
 void fileHandling(int days, std::string title, std::string date, std::string endDate)
 {
 	std::cout << '\n' << days << '\t' << title << '\t' << date << '\t' << endDate;
 
 	std::fstream fs;
-	fs.open ("dateStore.txt", std::fstream::in | std::fstream::out | std::fstream::app);
-	fs << title << ',' << date << ',' << endDate << ',' << days;
+	fs.open ("dataStore.txt", std::fstream::in | std::fstream::out | std::fstream::app);
+	fs << '\n' <<title << ',' << date << ',' << endDate << ',' << days;
 	fs.close();
 	
+}
+
+void fileParser()
+{
+	// file streams are proving to be difficult.
+	// all I want to do is read the file and print its contents right now...
+	std::ifstream fs("dataStore.txt");
+	std::string contents;
+	std::vector<std::string::size_type> n;
+
+	std::vector<std::string> fileData;
+	//fs.open ("dataStore.txt", std::fstream::in | std::fstream::out | std::fstream::app);
+
+	while(!fs.eof())	{
+		fs >> contents;
+		//std::cout << '\n' << contents << '\n';
+		fileData.push_back(contents);
+	}
+
+	//std::cout << '\n' << "Please enter the Title of the data you want to display" << '\n';
+	int c = 0;
+	// retrieves comma index position of all lines in txt file
+	for(int i = 0; i < fileData.size(); i++)	{
+			for(int j = 0; j < 2; j++)	{		
+				//std::cout << '\n' << "n size" << '\t' << n.size() << '\n';
+				if(n.size() == c*3)	{
+					n.push_back(fileData[i].find_last_of(","));
+					//std::cout << '\n' << "comma index" << '\t' <<  n[c*3] << '\n';
+				}
+				n.push_back(fileData[i].find_last_of(",", n[j] - 3));
+				//std::cout << '\n' << n[j] << '\n';
+
+				//n.push_back(fileData[i].find_last_of(",", n[i] - 3 ));
+			}
+		c+= 1;
+	} 
+	// Displays all the data in there different sections.
+	for(int i = 0; i < fileData.size(); i++)	{
+		//std::cout << '\n' << fileData[i] << '\n' << '\n';
+		std::string days;
+		std::string startDate;
+		std::string endDate;
+		std::string title;
+
+		for(int j = i*3; j < i*3+3; j++)	{
+			if(j == i*3)	{
+				//std::cout << '\n' << "days: " << '\t' << fileData[i].substr(n[j] + 1) << '\n';
+				days = fileData[i].substr(n[j] + 1);
+			}
+			if (j == i*3 + 1)	{
+				//std::cout << '\n' << "End Date and beginning Date" << '\t' << n[j] << '\t' << j;//fileData[i].substr(n[j] + 1) << '\n';
+				//std::cout << '\n' << "End Date: " << fileData[i].substr(n[i*3+1] + 1, n[i*3] - n[i*3+1] - 1) << '\n';
+				endDate = fileData[i].substr(n[i*3+1] + 1, n[i*3] - n[i*3+1] - 1);
+			}
+			if (j == i*3 + 2)	{
+				//std::cout << '\n' << "End Date and beginning Date" << '\t' << n[j] << '\t' << j;//fileData[i].substr(n[j] + 1) << '\n';
+				//std::cout << '\n' << "Start Date: " << fileData[i].substr(n[i*3+2] + 1, n[i*3 + 1] - n[i*3 + 2] - 1) << '\n';
+				startDate = fileData[i].substr(n[i*3+2] + 1, n[i*3 + 1] - n[i*3 + 2] - 1);
+			}
+			if (j == i*3 + 2)	{
+				//std::cout << '\n' << "Title: " << '\t' << fileData[i].substr(0, n[i*3+2]) << '\n';
+				title = fileData[i].substr(0, n[i*3+2]);
+			}
+		}
+		std::cout << '\n' << " | " << "Title: " << title << '\t' << "Start Date:"  << '\t' << startDate << '\t' << "End Date: " << '\t' << endDate << '\t' << "Days Between: " << days << " | " << '\n';
+	}
 }
 
 int intConcatenate(std::vector<int> intVec)
@@ -205,17 +275,36 @@ int DateParser(std::string date, std::string endDate)
 
 int main()
 {
+	std::string choice;
 	std::string answer;
 	std::string date;
 	std::string endDate;
 	std::string save;
 	std::string title;
+	
 
+	std::cout << "Would you like to: \n one. Create a new date entry \n two. Display saved date entries\n";
+	std::cin >> choice;
 
+	while (choice != "one" && choice != "two")	{
+		std::cout << "\n Please Enter A valid answer one or two \nWould you like to: \n 1. Create a new date entry \n 2. Display saved date entries\n";
+		std::cin >> choice;
+	}
+	if (choice == "one")	{
+
+	// Change this while condition to: do-while
+	// Because 
+	
 	std::cout << "Would you like to create a new entry \n";
 	std::cin >> answer;
 
 	while (answer == "y" && "Y") {
+		// Would you like to: 
+		// 1. Create a new date entry
+		// 2. Display saved date entries
+
+		
+		
 		std::cout << "\nPlease enter a valid start date in the format "
 			     "of DD/MM/YYYY \n";
 		std::cin >> date;
@@ -234,13 +323,16 @@ int main()
 		} else	{
 			DateParser(date, endDate);
 		}
-
+		
 		std::cout << "\nWould you like to create a new entry \n";
 		std::cin >> answer;
 	}
-
-	for (int i = 0; i < Days.size() && Months.size(); i++) {
-		std::cout << "Month: " << Months[i] << " - ";
-		std::cout << "Days in Month: " << Days[i] << '\n';
 	}
+	if (choice == "two")	{
+		fileParser();
+	}
+	//for (int i = 0; i < Days.size() && Months.size(); i++) {
+	//	std::cout << "Month: " << Months[i] << " - ";
+	//	std::cout << "Days in Month: " << Days[i] << '\n';
+	//}
 }

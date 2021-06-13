@@ -6,31 +6,28 @@
 
 
 
-GUI::GUI()
+GUI::GUI(sf::RenderWindow& window)
 {
-	std::cout << "Test";
+	window.clear();
 }
 
-void GUI::event(sf::RenderWindow& window)
+void GUI::event(sf::RenderWindow& window, bool e)
 {
 	sf::Event event;
 	while(window.pollEvent(event))	{
-		if (event.type == sf::Event::Closed)	{
+		if (!e)	{
 			window.close();	
 		}
 	}
 }
-void GUI::Session(std::string& state)
-{			
-	std::cout << "test1";
-	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window", sf::Style::Default);
-	while (window.isOpen())	{
-		GUI::event(window);
 
-		// This clears the previos frame
-		window.clear();
-		
-		// This displays the current frame	
-		window.display();
-	}	
+void GUI::Session(bool state)
+{			
+	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window", sf::Style::Default);
+
+}
+
+void GUI::Close(sf::RenderWindow& window)
+{
+	window.close();
 }
