@@ -8,4 +8,4 @@
 - This will be where the algorithms I make for my A Level maths course will be placed
 ###### GUI Folder
 - This is where I plan to use SFML as a UI for geometry and visualising mathematical concepts and such.
-The Rest of the files and folders are either WIP or need to be removed.
+###### The Rest of the files and folders are either WIP or need to be removed.
