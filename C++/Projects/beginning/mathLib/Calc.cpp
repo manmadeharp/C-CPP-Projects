@@ -172,6 +172,7 @@ Token Token_stream::get() {
 std::map<std::string, FnPtr> FunctList() {
 	std::map<std::string, FnPtr> functs;
 	functs["root"] = root;
+	//functs["drawCircle"] = UI.drawCircle;
 	return functs;
 }
 
@@ -193,11 +194,9 @@ double functParser(Token curTok, std::istream *ip, char ch, int c) {
 	}
 
 	else if (ch == ')') {
-		if (curTok.string_value == "GUI" || curTok.string_value == "CloseGUI") {
-			if (curTok.string_value == "CloseGUI") {
-				window.close();
-				return 0;
-			}
+		if (curTok.string_value == "CloseGUI") {
+			window.close();
+			return 0;
 		}
 		return functGenerator(arguments, curTok);
 	}

@@ -6,7 +6,8 @@
 
 
 
-GUI::GUI(sf::RenderWindow& window)
+GUI::GUI(sf::RenderWindow& window):
+	windowSession(window)
 {
 	window.clear();
 }
@@ -30,4 +31,13 @@ void GUI::Session(bool state)
 void GUI::Close(sf::RenderWindow& window)
 {
 	window.close();
+}
+
+// Drawing Shapes
+void GUI::drawCircle(float r)
+{
+	sf::CircleShape circle;
+	circle.setRadius(150);
+	circle.setPosition(400, 300);
+	windowSession.draw(circle);
 }

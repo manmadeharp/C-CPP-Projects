@@ -8,11 +8,12 @@ void GUI_Window(std::string& state);
 class GUI	
 {
 	public:	
-		int i = 0;
-		std::iostream* OStream;
+		sf::RenderWindow& windowSession;
 		GUI(sf::RenderWindow&);
 		virtual void Session(bool state = true);
 		void Close(sf::RenderWindow& window);
+		// Drawing
+		void drawCircle(float r);
 	private:
 		void event(sf::RenderWindow& window, bool e);	
 		std::string OpenOrClose;
