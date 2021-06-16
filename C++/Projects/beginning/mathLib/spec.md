@@ -19,7 +19,7 @@
 - Add new functions to mathlibrary and calculator.
 
 ##### Current Bugs
-- Token does not reset after GUI is called.
+- Token does not reset after GUI is called. FIXED - This was because the GUI function loop is infinite therefore interrupts the othe running loops.
 ###### Passing Variables as Functions
 - determine if a letter passed as an argument, is a definede varible through a class function return boolean, checkToken.
 - store a function containing a unknown varible as an argument until the variable is defined, then once the variable is defined print the functions output.
